@@ -1,0 +1,9 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@tailwindcss/oxide': true
+  esbuild: true
+  lefthook: true
+  unrs-resolver: true
+  vue-demi: true
+minimumReleaseAgeExclude:
+  - vue-summon@0.1.0
