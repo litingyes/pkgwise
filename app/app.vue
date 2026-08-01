@@ -1,4 +1,10 @@
 <script setup>
+import { onMounted } from 'vue'
+import { SummonHost } from 'vue-summon'
+import { useHead, useSeoMeta } from '#app'
+import NpmConnectButton from './components/npm/NpmConnectButton.vue'
+import { useNpmAuth } from './composables/useNpmAuth'
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -11,35 +17,43 @@ useHead({
   },
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'pkgwise'
+const description = 'Intelligent insights for the software package ecosystem.'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterCard: 'summary_large_image',
+  twitterCard: 'summary',
+})
+
+const { captureHashToken } = useNpmAuth()
+
+onMounted(() => {
+  captureHashToken()
 })
 </script>
 
 <template>
   <UApp>
+    <SummonHost />
+
     <UHeader>
       <template #left>
-        <NuxtLink to="/">
-          <AppLogo class="h-6 w-auto shrink-0" />
+        <NuxtLink to="/npm" class="flex items-center gap-2">
+          <Logo class="h-6 w-auto" />
+          <span class="text-lg font-bold">pkgwise</span>
         </NuxtLink>
-
-        <TemplateMenu />
       </template>
 
       <template #right>
+        <NpmConnectButton />
+
         <UColorModeButton />
 
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
+          to="https://github.com/liting/pkgwise"
           target="_blank"
           icon="i-simple-icons-github"
           aria-label="GitHub"
@@ -53,24 +67,13 @@ useSeoMeta({
       <NuxtPage />
     </UMain>
 
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
+    <USeparator />
 
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
+          pkgwise — Intelligent insights for the package ecosystem
         </p>
-      </template>
-
-      <template #right>
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
       </template>
     </UFooter>
   </UApp>

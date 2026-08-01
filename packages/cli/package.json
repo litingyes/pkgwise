@@ -1,0 +1,32 @@
+{
+  "name": "pkgwise",
+  "type": "module",
+  "version": "0.0.0",
+  "private": false,
+  "description": "pkgwise CLI for local npm authorization",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "pkgwise": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown src/cli.ts --clean --format esm --outDir dist --external commander,npm-profile,open",
+    "dev": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "npm-profile": "^13.0.1",
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tsdown": "^0.9.1",
+    "tsx": "^4.19.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "pkgwise",
+  "name": "pkgwise-web",
   "type": "module",
   "private": true,
   "packageManager": "pnpm@11.17.0",
@@ -16,6 +16,7 @@
     "@iconify-json/lucide": "^1.2.121",
     "@iconify-json/simple-icons": "^1.2.92",
     "@nuxt/ui": "^4.10.0",
+    "@vueuse/core": "^14.4.0",
     "@vueuse/nuxt": "14.4.0",
     "nuxt": "^4.5.1",
     "reka-ui": "^2.10.1",
